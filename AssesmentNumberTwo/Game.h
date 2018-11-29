@@ -25,7 +25,9 @@ public:
 
 	//has all game logic for individual screen
 	void mainMenu();
-	void inGame();
+	void lvlOne();
+	void lvlTwo();
+	void lvlThree();
 	void introScreen();
 	void winScreen();
 	void loseScreen();

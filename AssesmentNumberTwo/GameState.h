@@ -10,7 +10,9 @@ enum GStates
 {
 	MainMenu = 0,
 	IntroText,
-	InGame,
+	lvlOne,
+	lvlwo,
+	lvlThree,
 	WinScreen,
 	LoseScreen
 };

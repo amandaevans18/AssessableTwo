@@ -18,7 +18,7 @@ int main()
 
 
 	//Controls the window size / makes the window
-	InitWindow(screenWidth, screenHeight, "Platformed");
+	InitWindow(screenWidth, screenHeight, "Dungeon");
 
 	SetTargetFPS(60);
 	//--------------------------------------------------------------------------------------

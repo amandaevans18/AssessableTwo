@@ -6,7 +6,7 @@ class tVector
 {
 	const static size_t GROWTH_FACTOR = 2;
 
-	T *arr;                             // pointer to underlying array
+	T *arr;								// pointer to underlying array
 	size_t arrSize;                     // stores the number of elements currently used
 	size_t arrCapacity;                 // stores the capacity of the underlying array
 
@@ -20,6 +20,7 @@ public:
 
 	void push_back(const T &value);     // adds an element to the end of the vector
 	void pop_back();                    // drops the last element of the vector
+	void remove(size_t val);
 
 	T &at(size_t index);                // returns the element at the given element
 
@@ -43,7 +44,9 @@ public:
 template<typename T>
 tVector<T>::tVector()
 {
-
+	arrSize = 0;
+	arrCapacity = 1;
+	arr = new T [arrCapacity];
 }
 
 template<typename T>
@@ -69,11 +72,11 @@ void tVector<T>::reserve(size_t newCapacity)
 		return;
 	}
 
-	T *temp = new T[newCapacity]();
+	T *temp = new T [newCapacity];
 
 	for (int i = 0; i < newCapacity; i++)
 	{
-		if (i < arrSize)
+		if (i <= arrSize + 1)
 		{
 			temp[i] = arr[i];
 		}
@@ -88,20 +91,43 @@ void tVector<T>::reserve(size_t newCapacity)
 template<typename T>
 void tVector<T>::push_back(const T & value)
 {
-	arrSize++;
+
 	if (arrCapacity <= arrSize)
 	{
 		reserve(arrCapacity * GROWTH_FACTOR);
 	}
 
 	arr[arrSize] = value;
-
+	arrSize++;
 }
 
 template<typename T>
 void tVector<T>::pop_back()
 {
 	arrSize--;
+}
+
+template<typename T>
+void tVector<T>::remove(size_t val)
+{
+	if (arr[arrSize - 1] == val)
+	{
+		arrSize--;
+	}
+	for (size_t i = 0; i < arrSize; i++)
+	{
+
+		if (arr[i] == val)
+		{
+
+			std::cout << arr[arrSize - 1] << std::endl;
+			arr[i] = arr[arrSize - 1];
+			std::cout << arr[i] << std::endl;
+
+			arrSize--;
+		}
+	}
+
 }
 
 template<typename T>
@@ -132,7 +158,7 @@ tVector<T>::tVector(const tVector & vec)
 template<typename T>
 tVector<T> & tVector<T>::operator=(const tVector & vec)
 {
-	// TODO: insert return statement her
+	// TODO: insert return statement here
 	int i;
 	for (i=0; i < arrCapacity; i++)
 	{
@@ -156,10 +182,12 @@ bool tVector<T>::empty()
 {
 	if (arrSize == 0)
 	{
+		std::cout << "Empty" << std::endl;
 		return true;
 	}
 	else
 	{
+		std::cout << "Full" << std::endl;
 		return false;
 	}
 }
@@ -169,7 +197,7 @@ void tVector<T>::resize(size_t newSize)
 {
 	if (arrCapacity < newSize)
 	{
-		T *temp = new T[arrCapacity]();
+		T *temp = new T[arrCapacity];
 		for (int i = 0; i < newSize; i++)
 		{
 			temp[i] = arr[i];
@@ -196,7 +224,7 @@ void tVector<T>::clear()
 {
 	for (size_t i = 0; i < arrSize; i++)
 	{
-		arr[i] = nullptr;
+		arr[i] = 0;
 	}
 	arrSize = 0;
 }
@@ -204,8 +232,19 @@ void tVector<T>::clear()
 template<typename T>
  void tVector<T>::print()
 {
-	for (int i = 0; i < size(); i++) 
-	{
-		std::cout << arr[i] << std::endl; 
-	}
+	 if (size() != 0)
+	 {
+		 for (int i = 0; i < size(); i++)
+		 {
+
+			 std::cout << "Element of " << i << ":" << arr[i] << std::endl;
+
+		 }
+	 }
+	 else 
+	 {
+		 std::cout << "That vector empty" << std::endl;
+	 }
+	std::cout <<"Size: "<< size() << std::endl;
+	std::cout <<"Capacity: " <<capacity() << std::endl;
 }

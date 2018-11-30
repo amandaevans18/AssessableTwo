@@ -33,13 +33,25 @@ int main()
 		switch (userInput)
 		{
 		case 1:
-			std::cout << "Vector reserve it " << std::endl;
-			vectTest.reserve(amt);
+			std::cout << "Vector display " << std::endl;
+			vectTest.empty();
+			vectTest.push_back(7);
+			vectTest.push_back(2);
+			vectTest.push_back(8);
+			vectTest.push_back(9);
+			vectTest.push_back(2);
+			vectTest.print(); 
+			vectTest.remove(2);
 			vectTest.print();
+			vectTest.clear();
+			vectTest.print(); // nothing
 			
 			break;
 		case 2:
 			std::cout << "Linked list display" << std::endl;
+			linkedListTest.push_front(7);
+			linkedListTest.pop_front();
+
 			break;
 
 		case 3:

@@ -19,7 +19,7 @@ public:
 
 	bool empty() const;                 // Returns true if the vector contains no elements.
 
-	T & tStack<T>::top() const;
+	T & top() const;
 };
 
 template<typename T>
@@ -34,7 +34,7 @@ void tStack<T>::push(const T & value)
 	vec.arrSize++;
 	if (vec.arrCapacity <= vec.arrSize)
 	{
-		reserve(vec.arrCapacity * GROWTH_FACTOR);
+		vec.push_back();
 	}
 
 	vec[vec.arrSize] = value;
@@ -59,13 +59,13 @@ size_t tStack<T>::size() const
 }
 
 template<typename T>
-inline bool tStack<T>::empty() const
+ bool tStack<T>::empty() const
 {
 	return vec.empty();
 }
 
 template<typename T>
-inline T & tStack<T>::top() const
+ T & tStack<T>::top() const
 {
 	// TODO: insert return statement here
 	return vec[vec.arrSize - 1];

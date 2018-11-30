@@ -1,4 +1,6 @@
 #pragma once
+#include<iostream>
+
 template <typename T>
 class tVector
 {
@@ -35,6 +37,7 @@ public:
 	void resize(size_t newSize);  // Resizes the vector to contain the given number of elements.
 	void shrink_to_fit(); // Resizes the vector's capacity to match its size.
 	void clear();         // Empties the vector (all elements are destroyed in this process)
+	void print();
 };
 
 template<typename T>
@@ -60,28 +63,26 @@ T * tVector<T>::data()
 template<typename T>
 void tVector<T>::reserve(size_t newCapacity)
 {
-	if (size > newCapacity)
+	if (size() > newCapacity)
 	{
 		std::cout << "Sorry thats what resize is for!!!" << std::endl;
-		system("PAUSE");
 		return;
 	}
+
 	T *temp = new T[newCapacity]();
+
 	for (int i = 0; i < newCapacity; i++)
 	{
 		if (i < arrSize)
 		{
-			break;
-		}
-		else
-		{
 			temp[i] = arr[i];
 		}
 	}
-	arrCapacity = newCapacity;
-	*arr = *temp;
-	delete temp;
 
+	arrCapacity = newCapacity;
+	delete[] arr;
+	arr = temp;
+	
 }
 
 template<typename T>
@@ -132,9 +133,11 @@ template<typename T>
 tVector<T> & tVector<T>::operator=(const tVector & vec)
 {
 	// TODO: insert return statement her
-	for (size_t i = 0; i < arrCapacity; i++)
+	int i;
+	for (i=0; i < arrCapacity; i++)
 	{
 		arr[i] = vec[i];
+		
 	}
 	arrCapacity = vec.arrCapacity;
 	arrSize = vec, arrSize;
@@ -145,7 +148,7 @@ template<typename T>
 T & tVector<T>::operator[](size_t index)
 {
 	// TODO: insert return statement here
-	return arr.at(index);
+	return at(index);
 }
 
 template<typename T>
@@ -193,7 +196,16 @@ void tVector<T>::clear()
 {
 	for (size_t i = 0; i < arrSize; i++)
 	{
-		arr[i] = NULL;
+		arr[i] = nullptr;
 	}
 	arrSize = 0;
+}
+
+template<typename T>
+ void tVector<T>::print()
+{
+	for (int i = 0; i < size(); i++) 
+	{
+		std::cout << arr[i] << std::endl; 
+	}
 }

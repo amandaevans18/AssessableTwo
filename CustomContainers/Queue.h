@@ -1,7 +1,7 @@
 // tQueue.h
 #pragma once
 
-#include "tVector.h"
+#include "Vector.h"
 
 template <typename T>
 class tQueue

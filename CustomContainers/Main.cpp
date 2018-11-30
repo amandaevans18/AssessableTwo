@@ -50,8 +50,16 @@ int main()
 		case 2:
 			std::cout << "Linked list display" << std::endl;
 			linkedListTest.push_front(7);
+			linkedListTest.push_front(6);
+			linkedListTest.push_front(5);
+			linkedListTest.push_front(4);
 			linkedListTest.pop_front();
-
+			linkedListTest.print();
+			std::cout << "Iterators" << std::endl;
+			for (auto it = linkedListTest.begin(); it != linkedListTest.end(); ++it)
+			{
+				std::cout << (*it) << std::endl;
+			}
 			break;
 
 		case 3:

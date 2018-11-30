@@ -15,15 +15,12 @@ public:
 		Node * cur;                                 // current node being operated upon
 
 	public:
+		iterator(Node * head);
 		bool operator==(const iterator& rhs) const; // returns true if the iterator points to the same node
 		bool operator!=(const iterator& rhs) const; // returns false if the iterator does not point to the same node
 		T& operator*() const;                       // returns a reference to the element pointed to by the current node
 		iterator& operator++();                     // pre-increment (returns a reference to this iterator after it is incremented)
 		iterator operator++(int);                   // post-increment (returns an iterator to current node while incrementing the existing iterator)
-
-
-		iterator begin();
-		iterator end();
 	};
 
 	Node * head;                    // pointer to head of linked list
@@ -39,7 +36,10 @@ public:
 	const T& front() const;         // returns the element at the head (const)
 
 	void remove(const T& val);      // removes all elements equal to the given value
+	void print();
 
+	iterator begin();
+	iterator end();
 };
 
 //default constructer 
@@ -107,8 +107,29 @@ void tForwardList<T>::remove(const T & val)
 	}
 }
 
+template<typename T>
+void tForwardList<T>::print()
+{
+	if (head != nullptr)
+	{
+		Node * temp = head;
+		while (temp != nullptr)
+		{
+			std::cout << temp->data << std::endl;
+			temp = temp->next;
+		}
+	}
+}
+
 
 //START OF ITERATORS
+
+template<typename T>
+tForwardList<T>::iterator::iterator(Node * head)
+{
+	cur = head;
+}
+
 template<typename T>
 bool tForwardList<T>::iterator::operator==(const iterator & rhs) const
 {
@@ -144,20 +165,14 @@ typename tForwardList<T>::iterator tForwardList<T>::iterator::operator++(int)
 }
 
 template<typename T>
-typename tForwardList<T>::iterator tForwardList<T>::iterator::begin()
+typename tForwardList<T>::iterator tForwardList<T>::begin()
 {
-	iterator begining = head;
-	return begining;
+
+	return iterator(head);
 }
 
 template<typename T>
-typename tForwardList<T>::iterator tForwardList<T>::iterator::end()
+typename tForwardList<T>::iterator tForwardList<T>::end()
 {
-	iterator end;
-	while (cur->next != nullptr) 
-	{
-		cur++;
-	}
-	end = cur;
-	return end;
+	return iterator(nullptr);
 }

@@ -14,16 +14,18 @@ int main()
 	int amt = 10;
 	tVector<int> vectTest;
 	tForwardList<int> linkedListTest;
-	tObjectPool<size_t> objPoolTest(10);
+	//tObjectPool<int> objPoolTest(20);
 	tStack<int> stackTest;
-	tQueue<int> queueTest;
+	tQueue<int> queueTest(10,2);
 
+
+	
 	std::cout << "Select Container to test" << std::endl;
 	std::cout << "[1] Vector" << std::endl;
 	std::cout << "[2] Linked List" << std::endl;
-	std::cout << "[3] Object pools" << std::endl;
-	std::cout << "[4] Stack" << std::endl;
-	std::cout << "[5] Queue" << std::endl;
+	//std::cout << "[5] Object pools" << std::endl;
+	std::cout << "[3] Stack" << std::endl;
+	std::cout << "[4] Queue" << std::endl;
 
 	while (stillTestin) 
 	{
@@ -63,15 +65,30 @@ int main()
 			break;
 
 		case 3:
-			std::cout << "Object pools display" << std::endl;
+			std::cout << "Stack display" << std::endl;
+			stackTest.push(1);
+			stackTest.push(2);
+			stackTest.push(3);
+			stackTest.pop();
+			stackTest.print();
+			std::cout <<"Number on top: "<<stackTest.top() << std::endl;
 			break;
 
 		case 4:
-			std::cout << "Stack display" << std::endl;
+			std::cout << "Queue display" << std::endl;
+			queueTest.print();
+			queueTest.push(3);
+			queueTest.print();
+			queueTest.pop();
+			queueTest.print();
+			std::cout << "Front of queue: " << queueTest.front() << " Back of queue: " << queueTest.back() << std::endl;
 			break;
 
 		case 5:
-			std::cout << "Queue display" << std::endl;
+			/*std::cout << "Object pools display" << std::endl;
+			objPoolTest.retrieve();
+			objPoolTest.recycle(*obj);
+			objPoolTest.capacity();*/
 			break;
 		default:
 			std::cout << "Try again" << std::endl;

@@ -21,6 +21,7 @@ public:
 	void recycle(T* obj);               // accepts a pointer that can be used in the future
 
 	size_t capacity();                  // returns the total number of objects that this pool can provide
+	void print();
 };
 
 template<typename T>
@@ -52,7 +53,7 @@ template<typename T>
 	 }
 	 else 
 	 {
-		 return *pool[usedCount];
+		 return &pool[usedCount];
 	 }
 }
 
@@ -78,4 +79,10 @@ template<typename T>
 size_t tObjectPool<T>::capacity()
 {
 	return cap;
+}
+
+template<typename T>
+void tObjectPool<T>::print()
+{
+	pool.print();
 }

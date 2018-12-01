@@ -22,6 +22,8 @@ public:
 	size_t size() const;                  // returns current number of elements
 
 	size_t empty() const;
+
+	void print();
 };
 
 template<typename T>
@@ -32,6 +34,11 @@ tQueue<T>::tQueue()
 template<typename T>
 tQueue<T>::tQueue(size_t count, const T & value)
 {
+	vec.reserve(count);
+	for (int i = 0; i < count; i++) 
+	{
+		vec.push_back(value);
+	}
 }
 
 template<typename T>
@@ -68,4 +75,10 @@ template<typename T>
 inline size_t tQueue<T>::empty() const
 {
 	return vec.empty();
+}
+
+template<typename T>
+void tQueue<T>::print()
+{
+	vec.print();
 }

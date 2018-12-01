@@ -20,6 +20,8 @@ public:
 	bool empty() const;                 // Returns true if the vector contains no elements.
 
 	T & top() const;
+
+	void print();
 };
 
 template<typename T>
@@ -31,31 +33,28 @@ tStack<T>::tStack()
 template<typename T>
 void tStack<T>::push(const T & value)
 {
-	vec.arrSize++;
-	if (vec.arrCapacity <= vec.arrSize)
-	{
-		vec.push_back();
-	}
 
-	vec[vec.arrSize] = value;
+	vec.push_back(value);
+
+
 }
 
 template<typename T>
 void tStack<T>::pop()
 {
-	vec.arrSize--;
+	vec.pop_back();
 }
 
 template<typename T>
 T & tStack<T>::top()
 {
-	return vec[vec.arrSize - 1];
+	return vec[vec.size() - 1];
 }
 
 template<typename T>
 size_t tStack<T>::size() const
 {
-	return vec.arrSize;
+	return vec.size();
 }
 
 template<typename T>
@@ -68,6 +67,26 @@ template<typename T>
  T & tStack<T>::top() const
 {
 	// TODO: insert return statement here
-	return vec[vec.arrSize - 1];
+	return vec[vec.size() - 1];
 
 }
+
+ template<typename T>
+ void tStack<T>::print()
+ {
+	 if (size() != 0)
+	 {
+		 for (int i = 0; i < size(); i++)
+		 {
+
+			 std::cout << "Element of " << i << ": " << vec[i] << std::endl;
+
+		 }
+	 }
+	 else
+	 {
+		 std::cout << "That Stack empty" << std::endl;
+	 }
+ }
+
+ 

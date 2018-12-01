@@ -2,7 +2,7 @@
 #include <iostream>
 #include "raylib.h"
 
-class Player
+class Enemy
 {
 	int health;
 	Texture2D texture;

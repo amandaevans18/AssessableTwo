@@ -2,20 +2,24 @@
 
 void Game::update()
 {
+	//deals with movement of player and enemy 
 }
 
 void Game::collision()
 {
+	//checks for collision
 }
 
 void Game::draw()
 {
+	//draws all of the sprites 
 }
 
 
 
 void Game::mainMenu()
 {
+
 }
 
 void Game::lvlOne()

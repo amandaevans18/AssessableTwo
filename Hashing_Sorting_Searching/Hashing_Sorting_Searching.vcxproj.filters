@@ -15,15 +15,18 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="MergeSort.cpp">
+    <ClCompile Include="HighScoreEntry.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HighScoreTable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MergeSort.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BubbleSort.h">
+    <ClInclude Include="HighScoreEntry.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="HighScoreTable.h">

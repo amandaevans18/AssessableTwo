@@ -159,14 +159,27 @@ template<typename T>
 tVector<T> & tVector<T>::operator=(const tVector & vec)
 {
 	// TODO: insert return statement here
-	int i;
-	for (i=0; i < arrCapacity; i++)
+	if (vec.arrSize == arrSize)
 	{
-		arr[i] = vec[i];
-		
+		int i;
+		for (i = 0; i < arrCapacity; i++)
+		{
+			arr[i] = vec[i];
+
+		}
+		arrCapacity = vec.arrCapacity;
+		arrSize = vec, arrSize;
 	}
-	arrCapacity = vec.arrCapacity;
-	arrSize = vec, arrSize;
+	//allocates
+	if(vec.arrSize > arrSize)
+	{
+		 
+	}
+	//deallocates
+	if (vec.arrSize < arrSize) 
+	{
+	
+	}
 	return arr[i];
 }
 
@@ -222,10 +235,6 @@ void tVector<T>::shrink_to_fit()
 template<typename T>
 void tVector<T>::clear()
 {
-	for (size_t i = 0; i < arrSize; i++)
-	{
-		arr[i] = 0;
-	}
 	arrSize = 0;
 }
 

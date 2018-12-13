@@ -31,6 +31,7 @@ template<typename T>
 	free.reserve(initialCapacity);
 	freeCount = initialCapacity;
 	usedCount = 0;
+	cap = initialCapacity;
 	for (int i = 0; i < initialCapacity; i++) 
 	{
 		pool[i] = T();

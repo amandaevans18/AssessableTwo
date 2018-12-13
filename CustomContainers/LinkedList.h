@@ -52,7 +52,16 @@ tForwardList<T>::tForwardList()
 template<typename T>
 tForwardList<T>::~tForwardList()
 {
-	delete head;
+	for (Node *itNode = head->next; itNode != nullptr; itNode = itNode->next)
+	{
+		if (head != nullptr) 
+		{
+			//missing a step
+			Node *tempNode = itNode->next;
+			itNode->next = itNode->next->next;
+			delete tempNode;
+		}
+	}
 }
 //Adds element to the front(head)
 template<typename T>
@@ -92,17 +101,21 @@ const T & tForwardList<T>::front() const
 template<typename T>
 void tForwardList<T>::remove(const T & val)
 {
-	for (Node *itNode = head->next; itNode != nullptr; itNode = itNode->next)
+	if (head == nullptr)
 	{
-		if (head->data == val)
+		for (Node *itNode = head->next; itNode != nullptr; itNode = itNode->next)
 		{
-			pop_front();
-		}
-		if (itNode->data == val)
-		{
-			Node *tempNode = itNode->next;
-			itNode->next = itNode->next->next;
-			delete tempNode;
+			if (head->data == val)
+			{
+				pop_front();
+			}
+			if (itNode->data == val)
+			{
+				//missing a step
+				Node *tempNode = itNode->next;
+				itNode->next = itNode->next->next;
+				delete tempNode;
+			}
 		}
 	}
 }

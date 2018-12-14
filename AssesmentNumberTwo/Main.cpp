@@ -6,7 +6,7 @@ use of assets from disk (sounds, images, file I/O)
 input-checking and response
 Since this is the second assessment project, we are primarily looking for growth in your programming abilities. 
 While you were permitted to write the most egregious code for your first assessment, we expect you to have learned and developed strategies for solving problems with programming.*/
-#include"GameState.h"
+#include"Game.h"
 int main()
 {
 	// Initialization

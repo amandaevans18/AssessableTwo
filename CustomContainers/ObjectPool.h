@@ -42,6 +42,15 @@ template<typename T>
 template<typename T>
 tObjectPool<T>::~tObjectPool()
 {
+	for (int i = 0; i < cap; i++)
+	{
+		pool[i] = nullptr;
+		free[i] = nullptr;
+	}
+
+	 freeCount = 0;                  
+	 usedCount = 0;                   
+	 cap = 0;
 
 }
 
@@ -61,19 +70,22 @@ template<typename T>
 template<typename T>
 void tObjectPool<T>::recycle(T * obj)
 {
-	for (int i = 0; i < cap; i++)
+	if ( head != nullptr)
 	{
-		if (pool[i] == *obj) 
+		for (int i = 0; i < cap; i++)
 		{
-			for (int j = 0; j < usedCount; j++) 
+			if (pool[i] == *obj)
 			{
-				pool[j] = pool[j + 1];
+				for (int j = 0; j < usedCount; j++)
+				{
+					pool[j] = pool[j + 1];
+				}
 			}
 		}
-	}
-	usedCount--;
-	free[usedCount] = false;
 
+		usedCount--;
+		free[usedCount] = false;
+	}
 }
 
 template<typename T>

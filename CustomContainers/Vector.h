@@ -171,14 +171,14 @@ tVector<T> & tVector<T>::operator=(const tVector & vec)
 		arrSize = vec, arrSize;
 	}
 	//allocates
-	if(vec.arrSize > arrSize)
+	else if(vec.arrSize > arrSize)
 	{
-		 
+		vec.resize(vec.arrsize);
 	}
 	//deallocates
-	if (vec.arrSize < arrSize) 
+	else if (vec.arrSize < arrSize) 
 	{
-	
+		vec.resize(vec.arrSize);
 	}
 	return arr[i];
 }
@@ -229,7 +229,16 @@ void tVector<T>::resize(size_t newSize)
 template<typename T>
 void tVector<T>::shrink_to_fit()
 {
+	if (arr[arrSize + 1] == nullptr)
+	{
+		for (int i = arrSize + 1; i < arrCapacity; i++)
+		{
+			arr[i] = nullptr;
+		}
+	}
+
 	arrCapacity = arrSize;
+	
 }
 
 template<typename T>

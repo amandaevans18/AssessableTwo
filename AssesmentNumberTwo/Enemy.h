@@ -8,6 +8,7 @@ class Enemy
 	Texture2D texture;
 	Vector2 pos;
 	int attack;
+	int attackSpeed;
 	int speed;
 	float height;
 	float width;

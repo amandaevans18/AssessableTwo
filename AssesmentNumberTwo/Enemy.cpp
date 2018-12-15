@@ -2,23 +2,18 @@
 
 Enemy::Enemy() 
 {
-	enabled = false;
 	texture = LoadTexture("sloth.png");
-	pos = { 0, 0, 10, 10 };
-	scale = 1;
-	timer = 0.0f;
-	step = 0;
+	enabled = false;
 }
 
 Enemy::Enemy(int _health, Rectangle _pos, int _attack, int _attackSpeed, int _speed , int _pattern)
 {
 	health = _health;
-	texture = LoadTexture("sloth.png");
 	pos = _pos;
-	attack = _attack;
+	enemyAttackDmg = _attack;
 	attackSpeed = _attackSpeed;
 	speed = _speed;
-	enabled = false;
+	enabled = true;
 	scale = 1;
 	pattern = _pattern;
 	timer = 0.0f;
@@ -30,15 +25,15 @@ Enemy::~Enemy()
 {
 }
 
-void Enemy::draw()
+void Enemy::enemyDraw()
 {
-	if (enabled) 
+	if (enabled == true) 
 	{
-		DrawTextureEx(texture, { pos.x,pos.y }, 0.0f, scale, RED);
+		DrawTextureEx(texture, { pos.x,pos.y }, 0.0f, scale, WHITE);
 	}
 }
 
-void Enemy::attack(float deltaTime, std::vector<Bullet> bullets, Player player)
+void Enemy::enemyAttack(float deltaTime, std::vector<Bullet> bullets, Player player)
 {
 	if (timer >= attackSpeed)
 	{
@@ -92,7 +87,6 @@ void Enemy::attack(float deltaTime, std::vector<Bullet> bullets, Player player)
 		case 2:
 			//fires AT THE PLAYER
 
-			Vector2 temp;
 			if (player.pos.x == pos.x)
 			{
 				temp.x = 0;

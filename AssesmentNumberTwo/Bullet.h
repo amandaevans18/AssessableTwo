@@ -1,7 +1,6 @@
 #pragma once
 #include"raylib.h"
-#include"Enemy.h"
-#include"Player.h"
+
 
 enum WhomFired 
 {PLAYER, ENEMY};
@@ -22,5 +21,4 @@ public:
 
 	void draw();
 	void movement(float deltaTime);
-	void collisionUpdate(Player _player, Enemy _enemy);
 };

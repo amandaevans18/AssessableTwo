@@ -41,20 +41,4 @@ void Bullet::movement(float deltaTime)
 	}
 }
 
-void Bullet::collisionUpdate(Player player, Enemy enemy)
-{
-	if (enabled)
-	{
-		if (CheckCollisionRecs(pos, player.pos) && tag == ENEMY)
-		{
-			player.health -= attack;
-			enabled = false;
-		}
-		if (CheckCollisionRecs(pos, enemy.pos) && tag == PLAYER)
-		{
-			enemy.health -= attack;
-			enabled = false;
-		}
-	}
-}
 

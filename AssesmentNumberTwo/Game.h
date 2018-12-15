@@ -6,7 +6,10 @@
 #include"HealthPickups.h"
 #include"Enemy.h"
 
-
+enum gameState 
+{
+MAIN_MENU, LVLONE, LVLTWO,INTROSCREEN, WINSCREEN,LOSESCREEN
+};
 class Game
 {
 	//screen width
@@ -15,24 +18,14 @@ class Game
 	int screenHeight = 450;
 	//timer??
 	float timer = 0.0f;
-	//if the intro has been played
-	bool introPlayed = false;
-	//if all lvl1 enemys are dead
-	bool lvlOneBeat = false;
-	//if all lvl2 enemys are dead(game is won)
-	bool gameWon = false;
-	//if player is dead!
-	bool playerDead = false;
-	//keep track of tranistion screen
-	bool tranistion = false;
-	//menu button is pressed
-	bool startGame = false;
+	
 
 public:
 
 	Player player;
 	Enemy enemy[10];
 	std::vector<Bullet> bullets;
+	bool enemysAlive;
 
 	void update();
 	void draw();
@@ -50,11 +43,8 @@ public:
 	void winScreen();
 	//die if health is 0
 	void loseScreen();
-	//a transition screen
-	void transitionScreen();
 	//calling all of the functions above and calling their logic  
 	void go();
-	//reset varibles
-	void resetVaribles();
+
 
 };

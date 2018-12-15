@@ -13,11 +13,11 @@ public:
 	int health;
 	Texture2D texture;
 	Rectangle pos;
-	int attack;
+	int enemyAttackDmg;
 	// how much time between bullets
 	int attackSpeed;
 	// how fast bullets move
-	int speed;
+	float speed;
 
 	bool enabled;
 	//big bois
@@ -31,6 +31,6 @@ public:
 	Enemy(int _health, Rectangle _pos, int _attack, int _attackSpeed, int _speed , int _pattern);
 	~Enemy();
 
-	void draw();
-	void attack(float deltaTime, std::vector<Bullet> bullets, Player player);
+	void enemyDraw();
+	void enemyAttack(float deltaTime, std::vector<Bullet> bullets, Player player);
 };

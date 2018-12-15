@@ -4,10 +4,10 @@ Player::Player()
 {
 	sprite = LoadTexture("sloth.png");
 	health = 5;
-	pos = {0,0,10,10};
-	speed = 1;
-	playerAttack = 1;
-	scale = 1;
+	pos = {400,250,5,5};
+	speed = 200;
+	playerAttackDmg = 1;
+	scale = .5;
 	bulletSpeed = 1;
 }
 
@@ -15,13 +15,13 @@ Player::~Player()
 {
 }
 
-void Player::draw()
+void Player::playerDraw()
 {
 	DrawTextureEx(sprite, { pos.x ,pos.y }, 0, scale, BLUE);
 
 }
 
-void Player::movement(float deltaTime, float screenX, float screenY)
+void Player::playerMovement(float deltaTime, float screenX, float screenY)
 {
 	float size = pos.height * pos.width;
 	// need to add an if player is on the ground
@@ -64,7 +64,7 @@ void Player::movement(float deltaTime, float screenX, float screenY)
 	}
 }
 
-void Player::attack(float deltaTime, std::vector<Bullet> bullets)
+void Player::playerAttack(float deltaTime, std::vector<Bullet> bullets)
 {
 	if (timer >= playerAttackSpeed) 
 	{

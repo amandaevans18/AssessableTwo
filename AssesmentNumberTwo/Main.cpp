@@ -26,7 +26,7 @@ int main()
 	// Main game loop
 	while (!WindowShouldClose())    // Detect window close button or ESC key
 	{
-
+		
 		BeginDrawing();
 		myGame.go();
 		EndDrawing();

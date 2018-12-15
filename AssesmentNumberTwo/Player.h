@@ -1,18 +1,26 @@
 #pragma once
 #include <iostream>
 #include "raylib.h"
+#include"Enemy.h"
+#include<vector>
 
 class Player 
 {
+public:
 	int health;
 	Texture2D sprite;
-	std::string spriteName;
-	Vector2 pos;
+	Rectangle pos;
 	int speed;
-	int attack;
-	float height;
-	float width;
+	int playerAttack;
+	int playerAttackSpeed;
+	int bulletSpeed;
+	float scale;
+	float timer;
+
+	Player();
+	~Player();
 
 	void draw();
 	void movement(float deltaTime, float screenX, float screenY);
+	void attack(float deltaTime, std::vector<Bullet> bullets);
 };

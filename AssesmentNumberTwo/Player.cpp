@@ -1,15 +1,29 @@
 #include "Player.h"
 
+Player::Player()
+{
+	sprite = LoadTexture("sloth.png");
+	health = 5;
+	pos = {0,0,10,10};
+	speed = 1;
+	playerAttack = 1;
+	scale = 1;
+	bulletSpeed = 1;
+}
+
+Player::~Player()
+{
+}
+
 void Player::draw()
 {
-	sprite = LoadTexture(spriteName.c_str());
-	DrawTexture(sprite, pos.x, pos.y, WHITE);
+	DrawTextureEx(sprite, { pos.x ,pos.y }, 0, scale, BLUE);
 
 }
 
 void Player::movement(float deltaTime, float screenX, float screenY)
 {
-	float size = height * width;
+	float size = pos.height * pos.width;
 	// need to add an if player is on the ground
 	if (IsKeyDown(KEY_W))
 	{
@@ -47,5 +61,29 @@ void Player::movement(float deltaTime, float screenX, float screenY)
 		{
 			//no movement
 		}
+	}
+}
+
+void Player::attack(float deltaTime, std::vector<Bullet> bullets)
+{
+	if (timer >= playerAttackSpeed) 
+	{
+		if (IsKeyPressed(KEY_UP)) 
+		{
+			bullets.push_back(Bullet({ pos.x,pos.y }, RED, 1, { 0, -bulletSpeed }, PLAYER));
+		}
+		else if(IsKeyPressed(KEY_DOWN))
+		{
+			bullets.push_back(Bullet({ pos.x,pos.y }, RED, 1, { 0, bulletSpeed }, PLAYER));
+		}
+		else if (IsKeyPressed(KEY_LEFT))
+		{
+			bullets.push_back(Bullet({ pos.x,pos.y }, RED, 1, { -bulletSpeed, 0 }, PLAYER));
+		}
+		else if (IsKeyPressed(KEY_RIGHT))
+		{
+			bullets.push_back(Bullet({ pos.x,pos.y }, RED, 1, { bulletSpeed, 0 }, PLAYER));
+		}
+		timer = 0;
 	}
 }

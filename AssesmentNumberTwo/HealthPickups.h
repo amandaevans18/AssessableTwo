@@ -1,16 +1,18 @@
 #pragma once
 #include <iostream>
 #include "raylib.h"
+#include"Player.h"
 
 class HealthPickups
 {
-	Vector2 pos;
+	Rectangle pos;
 	bool enabled;
-	Texture2D texture;
 	int val;
+	Color color;
 
 	HealthPickups();
-	HealthPickups();
+	HealthPickups(Rectangle _pos, Color _color,int _val);
+
 	void draw();
-	bool pickupCollected();
+	bool pickupCollected(Player player);
 };

@@ -135,11 +135,11 @@ void Game::lvlTwo()
 			break;
 		}
 	}
-	if (enemysAlive == true)
+	/*if (enemysAlive == true)
 	{
 		GameState = WINSCREEN;
 		return;
-	}
+	}*/
 }
 
 void Game::introScreen() 

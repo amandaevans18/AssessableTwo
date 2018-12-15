@@ -14,8 +14,8 @@ Bullet::Bullet(Vector2 _pos, Color _color, int _attack, Vector2 _speed , WhomFir
 	speed = _speed;
 	tag = _tag;
 	// hardcoded
-	pos.width = 1;
-	pos.height = 2;
+	pos.width = 10;
+	pos.height = 10;
 	enabled = true;
 }
 

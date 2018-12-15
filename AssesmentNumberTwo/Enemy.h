@@ -25,6 +25,7 @@ public:
 	//bullet pattern management
 	int pattern;
 	int step;
+	
 
 
 	Enemy();
@@ -32,5 +33,5 @@ public:
 	~Enemy();
 
 	void enemyDraw();
-	void enemyAttack(float deltaTime, std::vector<Bullet> bullets, Player player);
+	void enemyAttack(float deltaTime, std::vector<Bullet>& bullets, Player player);
 };

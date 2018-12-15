@@ -22,5 +22,5 @@ public:
 
 	void playerDraw();
 	void playerMovement(float deltaTime, float screenX, float screenY);
-	void playerAttack(float deltaTime, std::vector<Bullet> bullets);
+	void playerAttack(float deltaTime, std::vector<Bullet>& bullets);
 };

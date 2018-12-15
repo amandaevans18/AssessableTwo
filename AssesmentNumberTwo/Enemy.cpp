@@ -8,16 +8,18 @@ Enemy::Enemy()
 
 Enemy::Enemy(int _health, Rectangle _pos, int _attack, int _attackSpeed, int _speed , int _pattern)
 {
+	texture = LoadTexture("sloth.png");
 	health = _health;
 	pos = _pos;
 	enemyAttackDmg = _attack;
 	attackSpeed = _attackSpeed;
 	speed = _speed;
 	enabled = true;
-	scale = 1;
+	scale = .5;
 	pattern = _pattern;
 	timer = 0.0f;
 	step = 0;
+
 }
 
 
@@ -33,7 +35,7 @@ void Enemy::enemyDraw()
 	}
 }
 
-void Enemy::enemyAttack(float deltaTime, std::vector<Bullet> bullets, Player player)
+void Enemy::enemyAttack(float deltaTime, std::vector<Bullet>& bullets, Player player)
 {
 	if (timer >= attackSpeed)
 	{
@@ -119,6 +121,10 @@ void Enemy::enemyAttack(float deltaTime, std::vector<Bullet> bullets, Player pla
 			break;
 		}
 		timer = 0;
+		if (health <= 0)
+		{
+			enabled = false;
+		}
 	}
 
 	timer += deltaTime;

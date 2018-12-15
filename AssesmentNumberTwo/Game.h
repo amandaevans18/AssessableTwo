@@ -23,9 +23,11 @@ class Game
 public:
 
 	Player player;
-	Enemy enemy[10];
+	Enemy enemy[5];
 	std::vector<Bullet> bullets;
 	bool enemysAlive;
+	int amtOfenemies = 4;
+	std::string healthShown;
 
 	void update();
 	void draw();

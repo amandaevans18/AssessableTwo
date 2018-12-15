@@ -4,11 +4,11 @@ Player::Player()
 {
 	sprite = LoadTexture("sloth.png");
 	health = 5;
-	pos = {400,250,5,5};
+	pos = {400,250,64,64};
 	speed = 200;
 	playerAttackDmg = 1;
 	scale = .5;
-	bulletSpeed = 1;
+	bulletSpeed = 100;
 }
 
 Player::~Player()
@@ -64,7 +64,7 @@ void Player::playerMovement(float deltaTime, float screenX, float screenY)
 	}
 }
 
-void Player::playerAttack(float deltaTime, std::vector<Bullet> bullets)
+void Player::playerAttack(float deltaTime, std::vector<Bullet>& bullets)
 {
 	if (timer >= playerAttackSpeed) 
 	{
